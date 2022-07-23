@@ -5,24 +5,24 @@ import Button from '@mui/material/Button'
 
 // Components 
 
-import Header from '../components/Header'
+import Layout from "../components/Master"
 
 
 export default function Home() {
   return (
-    <div className='bg-slate-900'>
-      <div className="container mx-auto">
+    <div className='bg-[#121212]'>
+      <div className="mx-auto">
       <Head>
         <title>CryptoWatch</title>
         <meta name="description" content="CryptoCurrency Dashboard Frontend UI Created with Material UI TailwindCSS NextJS CoinGecko API" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <Header></Header>
-        
+      <main>
+        <Layout />
       </main>
       </div>
     </div>
   );
 }
+

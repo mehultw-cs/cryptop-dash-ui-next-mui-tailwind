@@ -1,0 +1,9 @@
+.bannerbg{
+    background-image: url(../public/banner2.jpg);
+    height: 400px;
+    width: 100vw;
+    display:flex;
+    flex-direction: column;
+    padding-top: 25;
+    justify-content:space-around;
+}

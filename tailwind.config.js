@@ -11,8 +11,10 @@ module.exports = {
                 'montserrat': ['Montserrat'],
                 'lato': ['Lato'],
                 'garamond': ['Garamond']
-            }
+            },
+     
     },
+    
   },
   plugins: [],
 };

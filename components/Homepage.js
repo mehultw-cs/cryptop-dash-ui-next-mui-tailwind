@@ -1,11 +1,14 @@
 import React from 'react'
 
+// import Components 
+import HomeBanner from './HomeBanner'
+
 const Homepage = () => {
   return (
     <>
-    <div>HomePage</div>
-    </>
+    <HomeBanner />
     
+    </>
   )
 }
 

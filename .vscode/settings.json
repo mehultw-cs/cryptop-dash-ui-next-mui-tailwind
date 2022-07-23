@@ -1,0 +1,16 @@
+{
+    "autoimport.filesToScan": "**/*.{ts,tsx,js,jsx}",
+    "prettier.configPath": "/.prettierrc",
+    "emmet.preferences": {
+    
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+
+    },
+    "json.schemas": [
+    {
+        "exclude":["node_modules"]
+    }
+    ],
+}

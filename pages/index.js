@@ -6,6 +6,8 @@ import Button from '@mui/material/Button'
 // Components 
 
 import Layout from "../components/Master"
+import { HistoricalChart } from './api/cryptodata';
+import Coinpage from '../components/Coinpage';
 
 
 export default function Home() {
@@ -25,4 +27,3 @@ export default function Home() {
     </div>
   );
 }
-

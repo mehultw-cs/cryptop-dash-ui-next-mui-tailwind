@@ -1,31 +1,5 @@
-// Import Scripts, Plugins and more 
+// imports
 
-// Import Components 
-import Header from "./Header"
-import Homepage from "./Homepage"
-import Coinpage from "./Coinpage"
-import CryptoContext from "./CryptoContext"
-import { HistoricalChart } from '../pages/api/cryptodata';
-
-const Layout = ({ children, title = "Crypto Watch", coinsList, singleCoin, historicalChart, trendingCoins }) => {
-  return (
-    <>
-    <div className="layout">
-      
-    </div>
-    <CryptoContext>
-      
-    <Header />
-    <Homepage />
-    </CryptoContext>
-    </>
-  )
-}
-
-export default Layout
-
-
-export async function getServerSideProps(context) {
 
 // CoinGecko API calls and store it in json to be used in Page, this time using SSR
 
@@ -35,9 +9,10 @@ export async function getServerSideProps(context) {
 
 
   // takes in currency and returns a list of coins in json data from coingecko API
-  const  coinList = async (currency) => {
+  export const  coinList = (currency) => {
     // fetch data
-    const coinListData = fetch(
+    const coinListDataFetch = async (currency) => {
+        const coinListData = fetch(
       `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
       );
 
@@ -46,12 +21,15 @@ export async function getServerSideProps(context) {
 
       // return desired json coinListData
       return coinListData;
+    };
+    
   };
 
   // takes in id and returns json data about a single coin from coingecko API
-  const singleCoin = async (id) => {
+ export const singleCoin = (id) => {
     
-    // fetch data
+    const singleCoinDataFetch = async (id) => {
+        // fetch data
     const singleCoinData = fetch(
       `https://api.coingecko.com/api/v3/coins/${id}`
     );
@@ -61,12 +39,15 @@ export async function getServerSideProps(context) {
     
     // return desired json single coin data
     return jSingleCoinData;
-  };
+  
+    }
+    };
 
   // takes in id, days, currency and returns markets historicalData in json format from coingecko API
-  const historicalChart = async (id, days = 365, currency) => {
+ export const historicalChart = (id, days, currency) => {
     
-    // fetch data
+    const historicalChartDataFetch = async (id, days = 365, currency) => {
+         // fetch data
     const historicalData = fetch(
       `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`
       );
@@ -76,13 +57,17 @@ export async function getServerSideProps(context) {
 
       // return desired json single coin data
       return jHistoricalData;
+    }
+   
   };
 
 
   // takes in currency and returns trending Coins on the market in json format from coingecko API
-  const trendingCoins = async (currency) => {
+ export const trendingCoins = (currency) => {
     
-    // fetch data
+    const trendingCoinDataFetch = async (currency) => {
+
+// fetch data
     const trendingCoinsData = fetch(
       `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=gecko_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`
       );
@@ -93,21 +78,13 @@ export async function getServerSideProps(context) {
 
       // return desired json trending coins data
       return jTrendingCoinsData;
-  };
+
+    }
+      };
 
   // Storing API results:
 
-  const fetchCoinListData = await coinList(currency);
-  const fetchSingleCoinData = await singleCoin(id);
-  const fetchHistoricData = await historicalChart(id, days, currency);
-  const fetchTrendingData = await trendingCoins(currency);
-
-  return {
-    props: {
-      coinsList: fetchCoinListData,
-      singleCoin: fetchSingleCoinData,
-      historicalChart: fetchHistoricData,
-      trendingCoins: fetchCTrendingData,
-    },
-  };
-};
+//   const fetchCoinListData =  coinList(currency);
+//   const fetchSingleCoinData =  singleCoin(id);
+//   const fetchHistoricData =  historicalChart(id, days, currency);
+//   const fetchTrendingData =  trendingCoins(currency);
